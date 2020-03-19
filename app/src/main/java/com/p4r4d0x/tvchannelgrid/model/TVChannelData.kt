@@ -1,5 +1,7 @@
 package com.p4r4d0x.tvchannelgrid.model
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
 data class TVChannelDataResponse(
@@ -18,6 +20,7 @@ data class Metadata(
     val timestamp: Long = 0
 )
 
+@Entity(tableName = "channels_table")
 data class ChannelData(
     @SerializedName("prLevel")
     val prLevel: Int = 0,
@@ -47,6 +50,7 @@ data class ChannelData(
     val id: Long = 0,
     @SerializedName("serviceId")
     val serviceId: String = "",
+    @PrimaryKey
     @SerializedName("identifier")
     val identifier: String = "",
     @SerializedName("ip")
@@ -68,7 +72,7 @@ data class ChannelData(
     @SerializedName("name")
     val name: String = "",
     @SerializedName("extrafields")
-    val extrafields: List<ExtraFields>?,
+    val extraFields: List<ExtraFields>?,
     @SerializedName("category")
     val category: String = "",
     @SerializedName("longName")

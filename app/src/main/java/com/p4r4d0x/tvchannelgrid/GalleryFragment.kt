@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 
 class GalleryFragment : Fragment() {
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -15,6 +16,5 @@ class GalleryFragment : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_gallery, container, false)
     }
-
 
 }

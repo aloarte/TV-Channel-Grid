@@ -4,6 +4,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import com.google.gson.Gson
 import com.p4r4d0x.tvchannelgrid.model.TVChannelDataResponse
+import com.p4r4d0x.tvchannelgrid.utilities.CHANNEL_DATA_FILENAME
 import junit.framework.TestCase.assertEquals
 import org.junit.Assert.assertNotNull
 import org.junit.Before
@@ -26,7 +27,7 @@ class TVChannelDataInstrumentedTest {
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
 
         val jsonChannel: String =
-            appContext.assets.open(PLANT_DATA_FILENAME).bufferedReader().use { it.readText() }
+            appContext.assets.open(CHANNEL_DATA_FILENAME).bufferedReader().use { it.readText() }
         assertNotNull(jsonChannel)
 
         //Parse from json into a class
