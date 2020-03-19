@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name" translatable="false">TV Channel Grid</string>
+    <string name="lorem_ipsum" translatable="false">Lorem ipsum</string>
+    <string name="home_fragment_label" translatable="false">Home Fragment</string>
+    <string name="gallery_fragment_label" translatable="false">Gallery Fragment</string>
+
+
+    <string name="btn_back">Back</string>
+    <string name="btn_continue_gallery">Check TV shows</string>
+
+
+</resources>
