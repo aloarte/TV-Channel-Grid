@@ -33,6 +33,7 @@ class GalleryFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         progressBar.show(requireContext(), resources.getString(R.string.loading_dialog_message))
+
         sw_filter_cinema.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 channelsDataViewModel.getChannelsDataFiltered(CINEMA_CATEGORY_VALUE)
@@ -49,16 +50,22 @@ class GalleryFragment : Fragment() {
     }
 
 
+
     private fun subscribeUi() {
         channelsDataViewModel.allowedChannels.observe(viewLifecycleOwner) { result ->
-            progressBar.dismiss()
-            val adapter = context?.let {
-                ChannelsAdapter(
-                    it,
-                    result as ArrayList<ChannelData>
-                )
+            if (result == null || result.isEmpty()) {
+                channelsDataViewModel.getChannelsData()
+            } else {
+                progressBar.dismiss()
+                val adapter = context?.let {
+                    ChannelsAdapter(
+                        it,
+                        result as ArrayList<ChannelData>
+                    )
+                }
+                gv_tv_content.adapter = adapter
             }
-            gv_tv_content.adapter = adapter
+
         }
     }
 
