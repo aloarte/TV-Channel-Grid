@@ -10,6 +10,7 @@ import androidx.lifecycle.observe
 import com.p4r4d0x.tvchannelgrid.adapters.ChannelsAdapter
 import com.p4r4d0x.tvchannelgrid.model.ChannelData
 import com.p4r4d0x.tvchannelgrid.model.ChannelsDataViewModel
+import com.p4r4d0x.tvchannelgrid.utilities.CINEMA_CATEGORY_VALUE
 import com.p4r4d0x.tvchannelgrid.utilities.InjectorUtils
 import kotlinx.android.synthetic.main.fragment_gallery.*
 
@@ -29,8 +30,17 @@ class GalleryFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        sw_filter_cinema.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                channelsDataViewModel.getChannelsDataFiltered(CINEMA_CATEGORY_VALUE)
+            } else {
+                channelsDataViewModel.getChannelsData()
+            }
+        }
 
         subscribeUi()
+
+        channelsDataViewModel.getChannelsData()
     }
 
 

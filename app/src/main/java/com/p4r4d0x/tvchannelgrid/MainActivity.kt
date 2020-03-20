@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         ).commit()
     }
 
-    fun launchGalleryragment() {
+    fun launchGalleryFragment() {
         supportFragmentManager.beginTransaction().replace(
             R.id.nav_fragment,
             GalleryFragment()

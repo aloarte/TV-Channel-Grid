@@ -12,8 +12,7 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        btn_nav_gallery_fragment.setOnClickListener { (activity as MainActivity).launchGalleryragment() }
-
+        btn_nav_gallery_fragment.setOnClickListener { (activity as MainActivity).launchGalleryFragment() }
     }
 
     override fun onCreateView(

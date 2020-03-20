@@ -4,6 +4,9 @@ class ChannelsRepository constructor(private val channelDao: ChannelDao) {
 
     fun getChannelsData() = channelDao.getChannelsData()
 
+    fun getChannelsDataFiltered(categoryFilter: String) =
+        channelDao.getChannelsDataFiltered(categoryFilter)
+
     companion object {
 
         // For Singleton instantiation

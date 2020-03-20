@@ -7,6 +7,7 @@
 
     <string name="btn_back">Back</string>
     <string name="btn_continue_gallery">Check TV shows</string>
+    <string name="switch_filter_value">Filter by "Cinema" category</string>
 
 
 </resources>
