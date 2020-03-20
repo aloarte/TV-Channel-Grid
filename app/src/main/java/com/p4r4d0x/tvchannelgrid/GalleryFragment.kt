@@ -20,6 +20,8 @@ class GalleryFragment : Fragment() {
         InjectorUtils.provideChannelListViewModelFactory(this)
     }
 
+    val progressBar = CustomProgressBar()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -30,22 +32,26 @@ class GalleryFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        progressBar.show(requireContext(), resources.getString(R.string.loading_dialog_message))
         sw_filter_cinema.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 channelsDataViewModel.getChannelsDataFiltered(CINEMA_CATEGORY_VALUE)
             } else {
                 channelsDataViewModel.getChannelsData()
             }
+            progressBar.show(requireContext(), resources.getString(R.string.loading_dialog_message))
         }
 
         subscribeUi()
 
         channelsDataViewModel.getChannelsData()
+
     }
 
 
     private fun subscribeUi() {
         channelsDataViewModel.allowedChannels.observe(viewLifecycleOwner) { result ->
+            progressBar.dismiss()
             val adapter = context?.let {
                 ChannelsAdapter(
                     it,
@@ -55,4 +61,6 @@ class GalleryFragment : Fragment() {
             gv_tv_content.adapter = adapter
         }
     }
+
+
 }
