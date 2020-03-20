@@ -46,11 +46,11 @@ data class ChannelData(
     val affiliation: String = "",
     @SerializedName("contentDefinition")
     val contentDefinition: String = "",
+    @PrimaryKey
     @SerializedName("id")
     val id: Long = 0,
     @SerializedName("serviceId")
     val serviceId: String = "",
-    @PrimaryKey
     @SerializedName("identifier")
     val identifier: String = "",
     @SerializedName("ip")

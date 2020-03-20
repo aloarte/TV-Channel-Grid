@@ -10,7 +10,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.p4r4d0x.tvchannelgrid.R
 import com.p4r4d0x.tvchannelgrid.model.ChannelData
-import com.squareup.picasso.Picasso
 
 class ChannelsAdapter(private val context: Context, var channelsData: ArrayList<ChannelData>) :
     BaseAdapter() {
@@ -41,8 +40,8 @@ class ChannelsAdapter(private val context: Context, var channelsData: ArrayList<
         //Get the ChannelData
         val channelData = this.channelsData[position]
 
-        Picasso.get().load(channelData.attachments!![0].value).placeholder(R.mipmap.ic_launcher)
-            .into(ivChannelImg)
+//        Picasso.get().load(channelData.attachments!![0].value).placeholder(R.mipmap.ic_launcher)
+//            .into(ivChannelImg)
         tvChannelName.text = channelData.name
 
         return channelItemView

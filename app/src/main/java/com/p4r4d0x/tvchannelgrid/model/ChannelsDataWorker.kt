@@ -1,4 +1,4 @@
-package com.p4r4d0x.tvchannelgrid
+package com.p4r4d0x.tvchannelgrid.model
 
 import android.content.Context
 import android.util.Log
@@ -6,15 +6,12 @@ import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
 import com.google.gson.Gson
 import com.google.gson.stream.JsonReader
-import com.p4r4d0x.tvchannelgrid.model.ChannelsDatabase
-import com.p4r4d0x.tvchannelgrid.model.TVChannelDataResponse
 import com.p4r4d0x.tvchannelgrid.utilities.CHANNEL_DATA_FILENAME
 import kotlinx.coroutines.coroutineScope
 
-class ChannelsDataWorker(
-    context: Context,
-    workerParams: WorkerParameters
-) : CoroutineWorker(context, workerParams) {
+
+class ChannelsDataWorker(private val context: Context, private val workerParams: WorkerParameters) :
+    CoroutineWorker(context, workerParams) {
 
     override suspend fun doWork(): Result = coroutineScope {
         try {
@@ -27,8 +24,8 @@ class ChannelsDataWorker(
                         TVChannelDataResponse::class.java
                     )
 
-                    val database = ChannelsDatabase.getInstance(applicationContext)
-                    database.channelDao().insertAll(dtoChannelDataRead.response!!)
+                    val channelsDatabase = ChannelsDatabase.getInstance(applicationContext)
+                    channelsDatabase.channelDao().insertAll(dtoChannelDataRead.response!!)
 
                     Result.success()
                 }
@@ -38,6 +35,7 @@ class ChannelsDataWorker(
             Result.failure()
         }
     }
+
 
     companion object {
         private val TAG = ChannelsDataWorker::class.java.simpleName

@@ -4,12 +4,12 @@ import android.content.Context
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
+import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.p4r4d0x.tvchannelgrid.model.*
-import junit.framework.TestCase.assertEquals
 import kotlinx.coroutines.runBlocking
+import org.hamcrest.CoreMatchers
 import org.junit.After
-import org.junit.Assert.assertNotNull
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -49,7 +49,7 @@ class ChannelsDataEntityTest {
                 "",
                 "",
                 "",
-                0,
+                1,
                 "",
                 "channelSameIdentifier1",
                 "IP",
@@ -150,9 +150,10 @@ class ChannelsDataEntityTest {
 
         channelDao.insertAll(channelsDataList)
 
-        val wholeDb = channelDao.getChannelsData()
-        assertNotNull(wholeDb)
-        assertEquals(wholeDb.size, 2)
+        ViewMatchers.assertThat(
+            getValue(channelDao.getChannelsData()).size,
+            CoreMatchers.equalTo(2)
+        )
 
 
     }

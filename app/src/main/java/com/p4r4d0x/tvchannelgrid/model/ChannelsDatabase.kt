@@ -24,7 +24,6 @@ import androidx.room.TypeConverters
 import androidx.sqlite.db.SupportSQLiteDatabase
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
-import com.p4r4d0x.tvchannelgrid.ChannelsDataWorker
 import com.p4r4d0x.tvchannelgrid.utilities.DATABASE_NAME
 import com.p4r4d0x.tvchannelgrid.utilities.DatabaseConverters
 
